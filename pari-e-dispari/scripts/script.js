@@ -32,7 +32,7 @@ while (!isInputValid && !userAsCancelled) {
             isInputValid = true;
 
         } else {
-
+            // SE DIVERSO FACCIO PARTIRE L'ALLERT
             alert(`Scegli tra PARI o DISPARI e tu hai scritto: ${categoryUpper}`);
         }
     }
