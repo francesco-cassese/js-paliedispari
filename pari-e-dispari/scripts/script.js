@@ -27,7 +27,7 @@ while (!inputIsValid && !userAsCancelled) {
     } else if (checkedCategoryUser === undefined) { // SE LA FUNZIONE DA UNDEFINED
 
         // TRASFORMO IL TESTO IN MAIUSCOLO 
-        categoryUpper = inputCategoryUser.trim().toUpperCase();
+        categoryUpper = inputCategoryUser.trim().toUpperCase().split(" ").join("");
 
         //CONTROLLO CHE L'UTENTE ABBIA INSERITO LE PAROLE CORRETTE     
         if (categoryUpper === 'PARI' || categoryUpper === 'DISPARI') {
