@@ -55,7 +55,7 @@ if (isInputValid) {
 
         //SE L'UTENTE CLICCA ANNULLA 
         if (inputNumberUser === null) {
-            numberIsValid = true
+            userAsCancelled = true
 
         } else if (checkedNumberUser === undefined) {
 
