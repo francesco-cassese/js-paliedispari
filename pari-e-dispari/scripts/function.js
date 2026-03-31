@@ -27,3 +27,17 @@ function generatorRandomNumber(min, max) {
     //VALORE MASSIMO es"5" - VALORE MINIMO es"1" + 1 PER COPRIRE L'INTERO RANGE E LO SOMMO DI NUOVO PER FAR ARRIVARE IL CALCOLO IN QUEL RANGE.
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+//====================================================
+//CALCOLATORE NUMERI PARI O DISPARI
+//====================================================
+
+function getParity(number) {
+
+    if (number % 2 === 0) {
+        return 'PARI';
+
+    } else {
+        return 'DISPARI';
+    }
+}
