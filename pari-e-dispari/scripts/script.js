@@ -39,7 +39,7 @@ while (!isInputValid && !userAsCancelled) {
     }
 }
 
-let numberUser; // inizializzo il numero fuori per poterlo usare dopo nell'addizione
+let numberUser; // inizializzo variabile per il numero in globale.
 
 if (isInputValid) {
 
