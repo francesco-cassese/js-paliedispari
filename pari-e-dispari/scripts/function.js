@@ -1,7 +1,7 @@
 'use strict';
 
 //====================================================
-//FUNZIONE CONTROLLI
+//FUNZIONE CONTROLLI GENERALI
 //====================================================
 
 function getValidateInput(input) {
@@ -10,11 +10,15 @@ function getValidateInput(input) {
         return 'Categoria/Numero non inserita/o';
     }
 
-    if (upperInput === "") {
+    if (input === "") {
         alert('Non lasciare questo campo vuoto')
         return `L'utente ha lasciato il campo vuoto`;
     }
 }
+
+// --- VALIDAZIONE FORMATO ---
+
+function
 
 //====================================================
 //GENERATOTRE NUMERI CASUALI
