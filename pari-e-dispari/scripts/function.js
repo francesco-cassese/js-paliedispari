@@ -1,6 +1,22 @@
 'use strict';
 
 //====================================================
+//FUNZIONE CONTROLLI
+//====================================================
+
+function getValidateInput(input) {
+    if (input === null) {
+        alert('Operazione Annullata')
+        return 'Categoria/Numero non inserita/o';
+    }
+
+    if (upperInput === "") {
+        alert('Non lasciare questo campo vuoto')
+        return `L'utente ha lasciato il campo vuoto`;
+    }
+}
+
+//====================================================
 //GENERATOTRE NUMERI CASUALI
 //====================================================
 
