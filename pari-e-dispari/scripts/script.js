@@ -80,16 +80,15 @@ if (inputIsValid) { //SOLO SE L'INPUT DI PRIMA è VERA ALLORA ENTRA QUI
 if (inputIsValid && numberIsValid) {
     console.log(`Perfetto.. L'utente ha scelo: ${categoryUpper} ed ha inserito il numero: ${numberUser}`);
 
-    //GENERO NUMERO CASUALE PER IL COMPUTER E RICHIAMO LA FUNZIONE
+    //GENERO NUMERO CASUALE PER IL COMPUTER , RICHIAMO LA FUNZIONE E LO STAMPO IN CONSOLE
     const numberComputer = generatorRandomNumber(1, 5);
-
     console.log(`il computer ha scelto ${numberComputer}`);
 
+    //ESEGUO LA SOMMA DEI NUMERI E LA STAMPO
     const sum = (numberUser + numberComputer);
-
     console.log(`il risultato della somma è ${sum}`);
 
+    //VERIFICO SE UN NUMERO è PARI O DISPARI TRAMITE FUNZIONE E LO STAMPO
     const finalResult = getParity(sum)
-
     console.log(`il risultato è ${finalResult}`);
 }
