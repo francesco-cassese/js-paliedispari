@@ -78,11 +78,11 @@ if (inputIsValid) { //SOLO SE L'INPUT DI PRIMA è VERA ALLORA ENTRA QUI
 
 //STAMPO NELLA CONSOLE LA SCELTA DEL UTENTE
 if (inputIsValid && numberIsValid) {
-    console.log(`Perfetto.. L'utente ha scelo: ${categoryUpper} ed ha inserito il numero: ${numberUser}`);
+    console.log(`Perfetto.. L'utente ha scelto: ${categoryUpper} ed ha inserito il numero: ${numberUser}`);
 
     //GENERO NUMERO CASUALE PER IL COMPUTER , RICHIAMO LA FUNZIONE E LO STAMPO IN CONSOLE
     const numberComputer = generatorRandomNumber(1, 5);
-    console.log(`il computer ha scelto ${numberComputer}`);
+    console.log(`al computer è capitato il numero: ${numberComputer}`);
 
     //ESEGUO LA SOMMA DEI NUMERI E LA STAMPO
     const sum = (numberUser + numberComputer);
@@ -91,4 +91,8 @@ if (inputIsValid && numberIsValid) {
     //VERIFICO SE UN NUMERO è PARI O DISPARI TRAMITE FUNZIONE E LO STAMPO
     const finalResult = getParity(sum)
     console.log(`il risultato è ${finalResult}`);
+
+    //VERDETTO FINALE
+    const finalVerdict = categoryUpper === finalResult ? 'ERROR 404: Dignità del Computer non trovata! HAI VINTO!!!' : 'Protocollo dominazione attivato... HAI FALLITO LA PREVISIONE';
+    alert(finalVerdict);
 }
