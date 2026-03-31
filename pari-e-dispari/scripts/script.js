@@ -42,9 +42,7 @@ while (!isInputValid && !userAsCancelled) {
 }
 
 
-if (isInputValid) {
-
-    let numberIsValid = false;
+if (isInputValid) { //SOLO SE L'INPUT DI PRIMA è VERA ALLORA ENTRA QUI
 
     while (!numberIsValid && !userAsCancelled) {
 
