@@ -38,9 +38,9 @@ function checkPalindrome(word) {
         }
     }
 
-    //DISTINZIONE TRA NUMERO E PAROLA
+    //DISTINZIONE TRA NUMERI E LETTERE
     if (/^\d+$/.test(cleanPrompt)) {
-        const cleanNumber = parseInt(cleanPrompt);
+        const cleanNumber = cleanPrompt;
         message = isPalindrome ? `${cleanNumber} è un numero Palindromo` : `${cleanNumber} Non è un numero palindromo`;
 
     } else {
