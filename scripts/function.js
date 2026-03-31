@@ -4,7 +4,7 @@
 //FUNZIONE PALINDROMO
 //=========================================================================
 
-function checkPalindrome(word) {
+function checkPalindrome(input) {
 
     //INIZIALIZZO LA VARIABILE NELLA FUNZIONE DA USARE COME USCITA DAL CICLO 
     let isPalindrome = true;
@@ -13,13 +13,13 @@ function checkPalindrome(word) {
     let message = "";
 
     //SE L'UTENTE CLICCA ANNULLA, ESCO SUBITO
-    if (word === null) {
+    if (input === null) {
         alert(`Operazione annullata`);
         return "Annullato";
     }
 
     //MI ASSICURO CHE NON CI SIANO SPAZI SUPERFLUI E CHE LA PAROLA SIA TUTTA IN MINUSCOLO
-    const cleanPrompt = word.toLowerCase().trim().split(" ").join("");
+    const cleanPrompt = input.toLowerCase().trim().split(" ").join("");
 
     //CONTROLLO CHE IL "PROMPT" NON RESTI VUOTO
     if (cleanPrompt === "") {
