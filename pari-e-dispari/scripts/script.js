@@ -9,7 +9,9 @@ Dichiariamo chi ha vinto.*/
 //INIZIALIZZO VARIABILE DI SUPPORTO 
 let isInputValid = false;
 let userAsCancelled = false;
+let numberIsValid = false;
 let categoryUpper;
+let numberUser;
 
 while (!isInputValid && !userAsCancelled) {
 
@@ -39,7 +41,6 @@ while (!isInputValid && !userAsCancelled) {
     }
 }
 
-let numberUser; // inizializzo variabile per il numero in globale.
 
 if (isInputValid) {
 
