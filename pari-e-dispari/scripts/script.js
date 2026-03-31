@@ -7,13 +7,13 @@ Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione),
 Dichiariamo chi ha vinto.*/
 
 //INIZIALIZZO VARIABILE DI SUPPORTO 
-let isInputValid = false;
+let inputIsValid = false;
 let userAsCancelled = false;
 let numberIsValid = false;
 let categoryUpper;
 let numberUser;
 
-while (!isInputValid && !userAsCancelled) {
+while (!inputIsValid && !userAsCancelled) {
 
     //FACCIO SCEGLIERE ALL'UTENTE UN NUMERO DA 1 A 5
     const inputCategoryUser = prompt('Scegli una categoria scrivendo tra PARI o DISPARI');
@@ -31,7 +31,7 @@ while (!isInputValid && !userAsCancelled) {
 
         //CONTROLLO CHE L'UTENTE ABBIA INSERITO LE PAROLE CORRETTE     
         if (categoryUpper === 'PARI' || categoryUpper === 'DISPARI') {
-            isInputValid = true;
+            inputIsValid = true;
 
         } else {
 
@@ -42,7 +42,7 @@ while (!isInputValid && !userAsCancelled) {
 }
 
 
-if (isInputValid) { //SOLO SE L'INPUT DI PRIMA è VERA ALLORA ENTRA QUI
+if (inputIsValid) { //SOLO SE L'INPUT DI PRIMA è VERA ALLORA ENTRA QUI
 
     while (!numberIsValid && !userAsCancelled) {
 
@@ -59,7 +59,7 @@ if (isInputValid) { //SOLO SE L'INPUT DI PRIMA è VERA ALLORA ENTRA QUI
         } else if (checkedNumberUser === undefined) {
 
             // TRASFORMO LA STRINGA IN NUMERO 
-            const numberUser = parseInt(inputNumberUser);
+            numberUser = parseInt(inputNumberUser);
 
             //CONTROLLO CHE ALL'INTERNO CI SIA EFFETTIVAMENTE UN NUMERO
             if (isNaN(numberUser)) {
@@ -68,11 +68,18 @@ if (isInputValid) { //SOLO SE L'INPUT DI PRIMA è VERA ALLORA ENTRA QUI
                 // CONTROLLO CHE L'UTENTE ABBIA INSERITO UN NUMERO TRA 1 E 5    
             } else if (numberUser < 1 || numberUser > 5) {
                 alert('Devi scegliere un numero tra 1 e 5');
+
+            } else {
+                numberIsValid = true;
             }
         }
     }
 }
 
+//STAMPO NELLA CONSOLE LA SCELTA DEL UTENTE
+if (inputIsValid && numberIsValid) {
+    console.log(`Perfetto.. L'utente ha scelo: ${categoryUpper} ed ha inserito il numero: ${numberUser}`);
+}
 
 //GENERO NUMERO CASUALE PER IL COMPUTER E RICHIAMO LA FUNZIONE
 const numberComputer = generatorRandomNumber(1, 5);
