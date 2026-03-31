@@ -11,4 +11,4 @@ const inputUser = prompt("Scrivi qui la parola/numero da valutare")
 const outcomeCheckPalindrome = checkPalindrome(inputUser);
 
 //STAMPO TUTTO
-console.log(outcomeCheckPalindrome);
+alert(outcomeCheckPalindrome);
