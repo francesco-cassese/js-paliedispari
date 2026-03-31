@@ -22,7 +22,7 @@ while (!isInputValid && !userAsCancelled) {
     if (inputCategoryUser === null) { //SE L'UTENTE CLICCA ANNULLA ESCI DAL WHILE
         userAsCancelled = true; //LA VARIABILE DI SUPPORTO DIVENTA TRUE PER USCIRE
 
-    } else if (checkedCategoryUser === undefined) { // SE LA PRIMA FUNZIONE DA UNDEFINED
+    } else if (checkedCategoryUser === undefined) { // SE LA FUNZIONE DA UNDEFINED
 
         // TRASFORMO IL TESTO IN MAIUSCOLO 
         categoryUpper = inputCategoryUser.trim().toUpperCase();
@@ -32,37 +32,44 @@ while (!isInputValid && !userAsCancelled) {
             isInputValid = true;
 
         } else {
+
             // SE DIVERSO FACCIO PARTIRE L'ALLERT
             alert(`Scegli tra PARI o DISPARI e tu hai scritto: ${categoryUpper}`);
         }
     }
 }
 
+let numberUser; // inizializzo il numero fuori per poterlo usare dopo nell'addizione
+
 if (isInputValid) {
 
-    // ADESSO CHIEDO IL NUMERO
-    const inputNumberUser = (prompt('Adesso inserisci un numero da 1 a 5'));
+    let numberIsValid = false;
 
-    // CONTROLLI GENERALI INPUT NUMERI
-    const checkedNumberUser = getValidateInput(inputNumberUser);
+    while (!numberIsValid && !userAsCancelled) {
 
-    if (checkedNumberUser !== undefined) {
-        isInputValid = false;
+        // ADESSO CHIEDO IL NUMERO
+        const inputNumberUser = (prompt('Adesso inserisci un numero da 1 a 5'));
 
-    } else {
+        // CONTROLLI GENERALI INPUT NUMERI
+        const checkedNumberUser = getValidateInput(inputNumberUser);
 
-        // TRASFORMO LA STRINGA IN NUMERO 
-        const numberUser = parseInt(inputNumberUser);
+        //SE L'UTENTE CLICCA ANNULLA 
+        if (inputNumberUser === null) {
+            numberIsValid = true
 
-        //CONTROLLO CHE ALL'INTERNO CI SIA EFFETTIVAMENTE UN NUMERO
-        if (isNaN(numberUser)) {
-            alert('Formato non valido')
-            isInputValid = false;
+        } else if (checkedNumberUser === undefined) {
 
-            // CONTROLLO CHE L'UTENTE ABBIA INSERITO UN NUMERO TRA 1 E 5    
-        } else if (numberUser < 1 || numberUser > 5) {
-            alert('Devi scegliere un numero tra 1 e 5');
-            isInputValid = false
+            // TRASFORMO LA STRINGA IN NUMERO 
+            const numberUser = parseInt(inputNumberUser);
+
+            //CONTROLLO CHE ALL'INTERNO CI SIA EFFETTIVAMENTE UN NUMERO
+            if (isNaN(numberUser)) {
+                alert('Formato non valido')
+
+                // CONTROLLO CHE L'UTENTE ABBIA INSERITO UN NUMERO TRA 1 E 5    
+            } else if (numberUser < 1 || numberUser > 5) {
+                alert('Devi scegliere un numero tra 1 e 5');
+            }
         }
     }
 }
