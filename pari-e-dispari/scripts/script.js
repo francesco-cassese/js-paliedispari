@@ -7,26 +7,34 @@ Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione),
 Dichiariamo chi ha vinto.*/
 
 //INIZIALIZZO VARIABILE DI SUPPORTO 
-let isInputValid = true;
+let isInputValid = false;
+let userAsCancelled = false;
+let categoryUpper;
 
-//FACCIO SCEGLIERE ALL'UTENTE UN NUMERO DA 1 A 5
-const inputCategoryUser = prompt('Scegli una categoria scrivendo tra PARI o DISPARI');
+while (!isInputValid && !userAsCancelled) {
 
-//CONTROLLO INPUT CATEGORIA
-let checkedCategoryUser = getValidateInput(inputCategoryUser);
+    //FACCIO SCEGLIERE ALL'UTENTE UN NUMERO DA 1 A 5
+    const inputCategoryUser = prompt('Scegli una categoria scrivendo tra PARI o DISPARI');
 
-if (checkedCategoryUser !== undefined) { // SE LA PRIMA FUNZIONE NON DA UNDEFINED
+    //CONTROLLO INPUT CATEGORIA
+    let checkedCategoryUser = getValidateInput(inputCategoryUser);
 
-    isInputValid = false; //L'INPUT NON è VALIDO
+    if (inputCategoryUser === null) { //SE L'UTENTE CLICCA ANNULLA ESCI DAL WHILE
+        userAsCancelled = true; //LA VARIABILE DI SUPPORTO DIVENTA TRUE PER USCIRE
 
-} else {
-    // TRASFORMO IL TESTO IN MAIUSCOLO 
-    const categoryUpper = inputCategoryUser.trim().toUpperCase();
+    } else if (checkedCategoryUser === undefined) { // SE LA PRIMA FUNZIONE DA UNDEFINED
 
-    //CONTROLLO CHE L'UTENTE ABBIA INSERITO LE PAROLE CORRETTE
-    if (categoryUpper !== 'PARI' && categoryUpper !== 'DISPARI') {
-        alert('Devi scegliere tra PARI o DISPARI');
-        isInputValid = false;
+        // TRASFORMO IL TESTO IN MAIUSCOLO 
+        categoryUpper = inputCategoryUser.trim().toUpperCase();
+
+        //CONTROLLO CHE L'UTENTE ABBIA INSERITO LE PAROLE CORRETTE     
+        if (categoryUpper === 'PARI' || categoryUpper === 'DISPARI') {
+            isInputValid = true;
+
+        } else {
+
+            alert(`Scegli tra PARI o DISPARI e tu hai scritto: ${categoryUpper}`);
+        }
     }
 }
 
