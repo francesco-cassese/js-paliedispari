@@ -16,9 +16,7 @@ function getValidateInput(input) {
     }
 }
 
-// --- VALIDAZIONE FORMATO ---
 
-function
 
 //====================================================
 //GENERATOTRE NUMERI CASUALI
