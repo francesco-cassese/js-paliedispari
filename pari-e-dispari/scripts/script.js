@@ -19,7 +19,7 @@ while (!inputIsValid && !userAsCancelled) {
     const inputCategoryUser = prompt('Scegli una categoria scrivendo tra PARI o DISPARI');
 
     //CONTROLLO INPUT CATEGORIA
-    let checkedCategoryUser = getValidateInput(inputCategoryUser);
+    const checkedCategoryUser = getValidateInput(inputCategoryUser);
 
     if (inputCategoryUser === null) { //SE L'UTENTE CLICCA ANNULLA ESCI DAL WHILE
         userAsCancelled = true; //LA VARIABILE DI SUPPORTO DIVENTA TRUE PER USCIRE
@@ -79,7 +79,17 @@ if (inputIsValid) { //SOLO SE L'INPUT DI PRIMA è VERA ALLORA ENTRA QUI
 //STAMPO NELLA CONSOLE LA SCELTA DEL UTENTE
 if (inputIsValid && numberIsValid) {
     console.log(`Perfetto.. L'utente ha scelo: ${categoryUpper} ed ha inserito il numero: ${numberUser}`);
-}
 
-//GENERO NUMERO CASUALE PER IL COMPUTER E RICHIAMO LA FUNZIONE
-const numberComputer = generatorRandomNumber(1, 5);
+    //GENERO NUMERO CASUALE PER IL COMPUTER E RICHIAMO LA FUNZIONE
+    const numberComputer = generatorRandomNumber(1, 5);
+
+    console.log(`il computer ha scelto ${numberComputer}`);
+
+    const sum = (numberUser + numberComputer);
+
+    console.log(`il risultato della somma è ${sum}`);
+
+    const finalResult = getParity(sum)
+
+    console.log(`il risultato è ${finalResult}`);
+}
