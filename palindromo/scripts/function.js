@@ -44,7 +44,7 @@ function checkPalindrome(input) {
         message = isPalindrome ? `${cleanNumber} è un numero Palindromo` : `${cleanNumber} Non è un numero palindromo`;
 
     } else {
-        message = isPalindrome ? `${cleanPrompt} è un Palindromo` : `${cleanPrompt} Non è un Palindromo`;
+        message = isPalindrome ? `${inputUser} è un Palindromo` : `${inputUser} Non è un Palindromo`;
     }
     return message;
 }
