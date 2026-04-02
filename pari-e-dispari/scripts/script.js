@@ -77,6 +77,7 @@ if (laCategoriaEValida) {
 
 //Stampo nella console il risultato finale solo se entrambe le variabili sono vere
 if (laCategoriaEValida && ilNumeroEvalido) {
+
     // GENERAZIONE E CALCOLO
     const numeroComputer = generatoreNumeriRandom(1, 5);
     const somma = sceltaNumeroUtente + numeroComputer;
