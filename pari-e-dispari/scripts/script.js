@@ -1,98 +1,97 @@
 'use strict';
 
-/*L’utente sceglie pari o dispari e inserisce un numero da 1 a 5.,
-Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzione).,
-Sommiamo i due numeri,
-Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione),
-Dichiariamo chi ha vinto.*/
+// DICHIARO VARIABILI PER POTER SALVARE I RISULTATI SUCCESSIVAMENTE
+let sceltaCategoriaUtente;
+let sceltaNumeroUtente;
 
-//INIZIALIZZO VARIABILE DI SUPPORTO 
-let inputIsValid = false;
-let userAsCancelled = false;
-let numberIsValid = false;
-let categoryUpper;
-let numberUser;
+// VARIABILE DI SUPPORTO PER USCITA WHILE 
+let ilNumeroEvalido = false;
+let laCategoriaEValida = false;
+let utenteHaAnnullato = false;
 
-while (!inputIsValid && !userAsCancelled) {
 
-    //FACCIO SCEGLIERE ALL'UTENTE UN NUMERO DA 1 A 5
-    const inputCategoryUser = prompt('Scegli una categoria scrivendo tra PARI o DISPARI');
+while (!laCategoriaEValida && !utenteHaAnnullato) {
+    //FACCIO SCEGLIERE UNA CATEGORIA
+    const inputUtente = prompt('Scegli una categoria scrivendo tra PARI o DISPARI');
 
-    //CONTROLLO INPUT CATEGORIA
-    const checkedCategoryUser = getValidateInput(inputCategoryUser);
+    //MI ASSICURO CHE IL TESTO EMESSO NON ABBIA ERRORI
+    const testoPulito = controllaPresenza(inputUtente, pulisciTesto);
 
-    if (inputCategoryUser === null) { //SE L'UTENTE CLICCA ANNULLA ESCI DAL WHILE
-        userAsCancelled = true; //LA VARIABILE DI SUPPORTO DIVENTA TRUE PER USCIRE
+    //STAMPO ERRORI SCELTA CATEGORIA
+    if (testoPulito === -1) {                   //SE L'UTENTE ANNULLA ESCE CAMBIANDO LA VARIABILE IN TRUE            
+        alert('Operazione annullata');
+        utenteHaAnnullato = true;
 
-    } else if (checkedCategoryUser === undefined) { // SE LA FUNZIONE DA UNDEFINED
+    } else if (testoPulito === 0) {             //SE L'UTENTE LASCIA IL CAMPO VUOTO
+        alert('Non lasciare questo campo vuoto')
+    } else {
 
-        // TRASFORMO IL TESTO IN MAIUSCOLO 
-        categoryUpper = inputCategoryUser.trim().toUpperCase().split(" ").join("");
+        //VALIDO LA PAROLA CON UNA FUNZIONE
+        sceltaCategoriaUtente = validaParola(testoPulito, 'PARI', 'DISPARI');
 
-        //CONTROLLO CHE L'UTENTE ABBIA INSERITO LE PAROLE CORRETTE     
-        if (categoryUpper === 'PARI' || categoryUpper === 'DISPARI') {
-            inputIsValid = true;
+        //SE IL TESTO è VALIDATO CAMBIA STATO A TRUE
+        if (sceltaCategoriaUtente) {
+            laCategoriaEValida = true;
 
+            //ALTRIMENTI ERRORE
         } else {
-
-            // SE DIVERSO FACCIO PARTIRE L'ALLERT
-            alert(`Scegli tra PARI o DISPARI e tu hai scritto: ${categoryUpper}`);
+            alert(`Scegli tra PARI o DISPARI e tu hai scritto: ${testoPulito}`);
         }
     }
 }
 
+//SOLO SE LA CATEGORIA è VALIDA ENTRA QUI
+if (laCategoriaEValida) {
+    while (!ilNumeroEvalido && !utenteHaAnnullato) {
 
-if (inputIsValid) { //SOLO SE L'INPUT DI PRIMA è VERA ALLORA ENTRA QUI
+        //FACCIO SCEGLIERE UN NUMERO DA 1 A 5
+        const inputNumeroUtente = prompt('Scegli un numero da 1 a 5');
 
-    while (!numberIsValid && !userAsCancelled) {
+        //CONTROLLO VALIDAZIONE NUMERO
+        const numeroPresente = controllaPresenza(inputNumeroUtente, pulisciTesto);
 
-        // ADESSO CHIEDO IL NUMERO
-        const inputNumberUser = (prompt('Adesso inserisci un numero da 1 a 5'));
+        if (numeroPresente === -1) {        // operazione annullata esco dal while cambiando la variabile
+            alert('Operazione annullata');
+            utenteHaAnnullato = true;
 
-        // CONTROLLI GENERALI INPUT NUMERI
-        const checkedNumberUser = getValidateInput(inputNumberUser);
+        } else if (numeroPresente === 0) {   // evito di far lasciare il campo vuoto
+            alert('Non lasciare questo campo vuoto');
 
-        //SE L'UTENTE CLICCA ANNULLA 
-        if (inputNumberUser === null) {
-            userAsCancelled = true
+        } else {
 
-        } else if (checkedNumberUser === undefined) {
+            // ulteriore controllo sul numero
+            const numeroValidato = validaNumero(numeroPresente);
 
-            // TRASFORMO LA STRINGA IN NUMERO 
-            numberUser = parseInt(inputNumberUser);
+            if (numeroValidato === -1) {                      //Se l'utente non mette un numero
+                alert('Immetti un NUMERO per favore')
 
-            //CONTROLLO CHE ALL'INTERNO CI SIA EFFETTIVAMENTE UN NUMERO
-            if (isNaN(numberUser)) {
-                alert('Formato non valido')
-
-                // CONTROLLO CHE L'UTENTE ABBIA INSERITO UN NUMERO TRA 1 E 5    
-            } else if (numberUser < 1 || numberUser > 5) {
-                alert('Devi scegliere un numero tra 1 e 5');
-
+            } else if (numeroValidato === 0) {                // se l'utente non sceglie tra 1 e 5
+                alert('Sei fuori dal range, scegli TRA 1 e 5');
             } else {
-                numberIsValid = true;
+                sceltaNumeroUtente = numeroValidato;        // salvo il risultato
+                ilNumeroEvalido = true;                        // ed esco cambiando lo stato della variabile
             }
         }
     }
 }
 
-//STAMPO NELLA CONSOLE LA SCELTA DEL UTENTE
-if (inputIsValid && numberIsValid) {
-    console.log(`Perfetto.. L'utente ha scelto: ${categoryUpper} ed ha inserito il numero: ${numberUser}`);
+//Stampo nella console il risultato finale solo se entrambe le variabili sono vere
+if (laCategoriaEValida && ilNumeroEvalido) {
+    // GENERAZIONE E CALCOLO
+    const numeroComputer = generatoreNumeriRandom(1, 5);
+    const somma = sceltaNumeroUtente + numeroComputer;
+    const risultatoFinale = getParity(somma, 'PARI', 'DISPARI');
 
-    //GENERO NUMERO CASUALE PER IL COMPUTER , RICHIAMO LA FUNZIONE E LO STAMPO IN CONSOLE
-    const numberComputer = generatorRandomNumber(1, 5);
-    console.log(`al computer è capitato il numero: ${numberComputer}`);
+    // STATISTICHE DELLA PARTITA
+    console.log(`MATCH: Utente (${sceltaCategoriaUtente}: ${sceltaNumeroUtente}) vs Computer (${numeroComputer})`);
 
-    //ESEGUO LA SOMMA DEI NUMERI E LA STAMPO
-    const sum = (numberUser + numberComputer);
-    console.log(`il risultato della somma è ${sum}`);
+    // ESITO 
+    console.log(`RISULTATO: La somma è ${somma}, un numero ${risultatoFinale}`);
 
-    //VERIFICO SE UN NUMERO è PARI O DISPARI TRAMITE FUNZIONE E LO STAMPO
-    const finalResult = getParity(sum)
-    console.log(`il risultato è ${finalResult}`);
+    // VERDETTO FINALE
+    const verdettoFinale = sceltaCategoriaUtente === risultatoFinale
+        ? 'ERROR 404: Dignità del Computer non trovata! HAI VINTO!!!'
+        : 'Protocollo dominazione attivato... HAI FALLITO LA PREVISIONE';
 
-    //VERDETTO FINALE
-    const finalVerdict = categoryUpper === finalResult ? 'ERROR 404: Dignità del Computer non trovata! HAI VINTO!!!' : 'Protocollo dominazione attivato... HAI FALLITO LA PREVISIONE';
-    alert(finalVerdict);
+    alert(verdettoFinale);
 }

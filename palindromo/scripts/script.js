@@ -8,7 +8,7 @@
 const inputUtente = prompt("Inserisci una parola o un numero da valutare:");
 
 // Controllo validità dati e faccio la distinzione tra numero e parola tramite funzione
-const datiValidati = controllaDati(inputUtente, pulisciTesto);
+const datiValidati = controllaPresenza(inputUtente, pulisciTesto);
 
 // Stampo i vari casi di errore
 if (datiValidati === -1) {
