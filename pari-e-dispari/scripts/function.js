@@ -4,7 +4,7 @@
 //FUNZIONE PER PULIRE IL TESTO EMESSO
 //====================================================
 
-const pulisciTesto = (testo) => {
+const pulisciTesto = testo => {
     // Trasforma in maiuscolo, toglie spazi ai lati e spazi interni
     return testo.toUpperCase().trim().split(" ").join("");
 };
@@ -32,7 +32,8 @@ const controllaPresenza = (input, pulizia) => {
 
 //Gestione errori numero
 
-const validaNumero = (input) => {
+const validaNumero = input => {
+
     // Trasformiamo in numero vero
     const numero = Number(input);
 
