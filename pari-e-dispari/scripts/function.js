@@ -72,9 +72,9 @@ const generatoreNumeriRandom = (min, max) => {
 //CALCOLATORE NUMERI PARI O DISPARI
 //====================================================
 
-const getParity = (number, opzione1, opzione2) => {
+const getParity = (numero, opzione1, opzione2) => {
 
-    if (number % 2 === 0) {
+    if (numero % 2 === 0) {
         return opzione1;
 
     } else {
